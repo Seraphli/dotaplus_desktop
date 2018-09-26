@@ -8,12 +8,28 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>dotaplus_desktop</RootNamespace>
     <AssemblyName>dotaplus_desktop</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -71,6 +87,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util.cs" />
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -102,7 +119,252 @@
   <ItemGroup>
     <Content Include="dotaplus.ico" />
     <Content Include="License-LGPL.txt" />
+    <EmbeddedResource Include="res\hero\abaddon.png" />
+    <EmbeddedResource Include="res\hero\abyssal_underlord.png" />
+    <EmbeddedResource Include="res\hero\alchemist.png" />
+    <EmbeddedResource Include="res\hero\ancient_apparition.png" />
+    <EmbeddedResource Include="res\hero\antimage.png" />
+    <EmbeddedResource Include="res\hero\arc_warden.png" />
+    <EmbeddedResource Include="res\hero\axe.png" />
+    <EmbeddedResource Include="res\hero\bane.png" />
+    <EmbeddedResource Include="res\hero\batrider.png" />
+    <EmbeddedResource Include="res\hero\beastmaster.png" />
+    <EmbeddedResource Include="res\hero\bloodseeker.png" />
+    <EmbeddedResource Include="res\hero\bounty_hunter.png" />
+    <EmbeddedResource Include="res\hero\brewmaster.png" />
+    <EmbeddedResource Include="res\hero\bristleback.png" />
+    <EmbeddedResource Include="res\hero\broodmother.png" />
+    <EmbeddedResource Include="res\hero\centaur.png" />
+    <EmbeddedResource Include="res\hero\chaos_knight.png" />
+    <EmbeddedResource Include="res\hero\chen.png" />
+    <EmbeddedResource Include="res\hero\clinkz.png" />
+    <EmbeddedResource Include="res\hero\crystal_maiden.png" />
+    <EmbeddedResource Include="res\hero\dark_seer.png" />
+    <EmbeddedResource Include="res\hero\dark_willow.png" />
+    <EmbeddedResource Include="res\hero\dazzle.png" />
+    <EmbeddedResource Include="res\hero\death_prophet.png" />
+    <EmbeddedResource Include="res\hero\disruptor.png" />
+    <EmbeddedResource Include="res\hero\doom_bringer.png" />
+    <EmbeddedResource Include="res\hero\dragon_knight.png" />
+    <EmbeddedResource Include="res\hero\drow_ranger.png" />
+    <EmbeddedResource Include="res\hero\earthshaker.png" />
+    <EmbeddedResource Include="res\hero\earth_spirit.png" />
+    <EmbeddedResource Include="res\hero\elder_titan.png" />
+    <EmbeddedResource Include="res\hero\ember_spirit.png" />
+    <EmbeddedResource Include="res\hero\enchantress.png" />
+    <EmbeddedResource Include="res\hero\enigma.png" />
+    <EmbeddedResource Include="res\hero\faceless_void.png" />
+    <EmbeddedResource Include="res\hero\furion.png" />
+    <EmbeddedResource Include="res\hero\grimstroke.png" />
+    <EmbeddedResource Include="res\hero\gyrocopter.png" />
+    <EmbeddedResource Include="res\hero\huskar.png" />
+    <EmbeddedResource Include="res\hero\invoker.png" />
+    <EmbeddedResource Include="res\hero\jakiro.png" />
+    <EmbeddedResource Include="res\hero\juggernaut.png" />
+    <EmbeddedResource Include="res\hero\keeper_of_the_light.png" />
+    <EmbeddedResource Include="res\hero\kunkka.png" />
+    <EmbeddedResource Include="res\hero\legion_commander.png" />
+    <EmbeddedResource Include="res\hero\leshrac.png" />
+    <EmbeddedResource Include="res\hero\lich.png" />
+    <EmbeddedResource Include="res\hero\life_stealer.png" />
+    <EmbeddedResource Include="res\hero\lina.png" />
+    <EmbeddedResource Include="res\hero\lion.png" />
+    <EmbeddedResource Include="res\hero\lone_druid.png" />
+    <EmbeddedResource Include="res\hero\luna.png" />
+    <EmbeddedResource Include="res\hero\lycan.png" />
+    <EmbeddedResource Include="res\hero\magnataur.png" />
+    <EmbeddedResource Include="res\hero\medusa.png" />
+    <EmbeddedResource Include="res\hero\meepo.png" />
+    <EmbeddedResource Include="res\hero\mirana.png" />
+    <EmbeddedResource Include="res\hero\monkey_king.png" />
+    <EmbeddedResource Include="res\hero\morphling.png" />
+    <EmbeddedResource Include="res\hero\naga_siren.png" />
+    <EmbeddedResource Include="res\hero\necrolyte.png" />
+    <EmbeddedResource Include="res\hero\nevermore.png" />
+    <EmbeddedResource Include="res\hero\night_stalker.png" />
+    <EmbeddedResource Include="res\hero\nyx_assassin.png" />
+    <EmbeddedResource Include="res\hero\obsidian_destroyer.png" />
+    <EmbeddedResource Include="res\hero\ogre_magi.png" />
+    <EmbeddedResource Include="res\hero\omniknight.png" />
+    <EmbeddedResource Include="res\hero\oracle.png" />
+    <EmbeddedResource Include="res\hero\pangolier.png" />
+    <EmbeddedResource Include="res\hero\phantom_assassin.png" />
+    <EmbeddedResource Include="res\hero\phantom_lancer.png" />
+    <EmbeddedResource Include="res\hero\phoenix.png" />
+    <EmbeddedResource Include="res\hero\puck.png" />
+    <EmbeddedResource Include="res\hero\pudge.png" />
+    <EmbeddedResource Include="res\hero\pugna.png" />
+    <EmbeddedResource Include="res\hero\queenofpain.png" />
+    <EmbeddedResource Include="res\hero\rattletrap.png" />
+    <EmbeddedResource Include="res\hero\razor.png" />
+    <EmbeddedResource Include="res\hero\riki.png" />
+    <EmbeddedResource Include="res\hero\rubick.png" />
+    <EmbeddedResource Include="res\hero\sand_king.png" />
+    <EmbeddedResource Include="res\hero\shadow_demon.png" />
+    <EmbeddedResource Include="res\hero\shadow_shaman.png" />
+    <EmbeddedResource Include="res\hero\shredder.png" />
+    <EmbeddedResource Include="res\hero\silencer.png" />
+    <EmbeddedResource Include="res\hero\skeleton_king.png" />
+    <EmbeddedResource Include="res\hero\skywrath_mage.png" />
+    <EmbeddedResource Include="res\hero\slardar.png" />
+    <EmbeddedResource Include="res\hero\slark.png" />
+    <EmbeddedResource Include="res\hero\sniper.png" />
+    <EmbeddedResource Include="res\hero\spectre.png" />
+    <EmbeddedResource Include="res\hero\spirit_breaker.png" />
+    <EmbeddedResource Include="res\hero\storm_spirit.png" />
+    <EmbeddedResource Include="res\hero\sven.png" />
+    <EmbeddedResource Include="res\hero\techies.png" />
+    <EmbeddedResource Include="res\hero\templar_assassin.png" />
+    <EmbeddedResource Include="res\hero\terrorblade.png" />
+    <EmbeddedResource Include="res\hero\tidehunter.png" />
+    <EmbeddedResource Include="res\hero\tinker.png" />
+    <EmbeddedResource Include="res\hero\tiny.png" />
+    <EmbeddedResource Include="res\hero\treant.png" />
+    <EmbeddedResource Include="res\hero\troll_warlord.png" />
+    <EmbeddedResource Include="res\hero\tusk.png" />
+    <EmbeddedResource Include="res\hero\undying.png" />
+    <EmbeddedResource Include="res\hero\ursa.png" />
+    <EmbeddedResource Include="res\hero\vengefulspirit.png" />
+    <EmbeddedResource Include="res\hero\venomancer.png" />
+    <EmbeddedResource Include="res\hero\viper.png" />
+    <EmbeddedResource Include="res\hero\visage.png" />
+    <EmbeddedResource Include="res\hero\warlock.png" />
+    <EmbeddedResource Include="res\hero\weaver.png" />
+    <EmbeddedResource Include="res\hero\windrunner.png" />
+    <EmbeddedResource Include="res\hero\winter_wyvern.png" />
+    <EmbeddedResource Include="res\hero\wisp.png" />
+    <EmbeddedResource Include="res\hero\witch_doctor.png" />
+    <EmbeddedResource Include="res\hero\zuus.png" />
+    <EmbeddedResource Include="res\hero_up\abaddon.png" />
+    <EmbeddedResource Include="res\hero_up\abyssal_underlord.png" />
+    <EmbeddedResource Include="res\hero_up\alchemist.png" />
+    <EmbeddedResource Include="res\hero_up\ancient_apparition.png" />
+    <EmbeddedResource Include="res\hero_up\antimage.png" />
+    <EmbeddedResource Include="res\hero_up\arc_warden.png" />
+    <EmbeddedResource Include="res\hero_up\axe.png" />
+    <EmbeddedResource Include="res\hero_up\bane.png" />
+    <EmbeddedResource Include="res\hero_up\batrider.png" />
+    <EmbeddedResource Include="res\hero_up\beastmaster.png" />
+    <EmbeddedResource Include="res\hero_up\bloodseeker.png" />
+    <EmbeddedResource Include="res\hero_up\bounty_hunter.png" />
+    <EmbeddedResource Include="res\hero_up\brewmaster.png" />
+    <EmbeddedResource Include="res\hero_up\bristleback.png" />
+    <EmbeddedResource Include="res\hero_up\broodmother.png" />
+    <EmbeddedResource Include="res\hero_up\centaur.png" />
+    <EmbeddedResource Include="res\hero_up\chaos_knight.png" />
+    <EmbeddedResource Include="res\hero_up\chen.png" />
+    <EmbeddedResource Include="res\hero_up\clinkz.png" />
+    <EmbeddedResource Include="res\hero_up\crystal_maiden.png" />
+    <EmbeddedResource Include="res\hero_up\dark_seer.png" />
+    <EmbeddedResource Include="res\hero_up\dark_willow.png" />
+    <EmbeddedResource Include="res\hero_up\dazzle.png" />
+    <EmbeddedResource Include="res\hero_up\death_prophet.png" />
+    <EmbeddedResource Include="res\hero_up\disruptor.png" />
+    <EmbeddedResource Include="res\hero_up\doom_bringer.png" />
+    <EmbeddedResource Include="res\hero_up\dragon_knight.png" />
+    <EmbeddedResource Include="res\hero_up\drow_ranger.png" />
+    <EmbeddedResource Include="res\hero_up\earthshaker.png" />
+    <EmbeddedResource Include="res\hero_up\earth_spirit.png" />
+    <EmbeddedResource Include="res\hero_up\elder_titan.png" />
+    <EmbeddedResource Include="res\hero_up\ember_spirit.png" />
+    <EmbeddedResource Include="res\hero_up\enchantress.png" />
+    <EmbeddedResource Include="res\hero_up\enigma.png" />
+    <EmbeddedResource Include="res\hero_up\faceless_void.png" />
+    <EmbeddedResource Include="res\hero_up\furion.png" />
+    <EmbeddedResource Include="res\hero_up\grimstroke.png" />
+    <EmbeddedResource Include="res\hero_up\gyrocopter.png" />
+    <EmbeddedResource Include="res\hero_up\huskar.png" />
+    <EmbeddedResource Include="res\hero_up\invoker.png" />
+    <EmbeddedResource Include="res\hero_up\jakiro.png" />
+    <EmbeddedResource Include="res\hero_up\juggernaut.png" />
+    <EmbeddedResource Include="res\hero_up\keeper_of_the_light.png" />
+    <EmbeddedResource Include="res\hero_up\kunkka.png" />
+    <EmbeddedResource Include="res\hero_up\legion_commander.png" />
+    <EmbeddedResource Include="res\hero_up\leshrac.png" />
+    <EmbeddedResource Include="res\hero_up\lich.png" />
+    <EmbeddedResource Include="res\hero_up\life_stealer.png" />
+    <EmbeddedResource Include="res\hero_up\lina.png" />
+    <EmbeddedResource Include="res\hero_up\lion.png" />
+    <EmbeddedResource Include="res\hero_up\lone_druid.png" />
+    <EmbeddedResource Include="res\hero_up\luna.png" />
+    <EmbeddedResource Include="res\hero_up\lycan.png" />
+    <EmbeddedResource Include="res\hero_up\magnataur.png" />
+    <EmbeddedResource Include="res\hero_up\medusa.png" />
+    <EmbeddedResource Include="res\hero_up\meepo.png" />
+    <EmbeddedResource Include="res\hero_up\mirana.png" />
+    <EmbeddedResource Include="res\hero_up\monkey_king.png" />
+    <EmbeddedResource Include="res\hero_up\morphling.png" />
+    <EmbeddedResource Include="res\hero_up\naga_siren.png" />
+    <EmbeddedResource Include="res\hero_up\necrolyte.png" />
+    <EmbeddedResource Include="res\hero_up\nevermore.png" />
+    <EmbeddedResource Include="res\hero_up\night_stalker.png" />
+    <EmbeddedResource Include="res\hero_up\nyx_assassin.png" />
+    <EmbeddedResource Include="res\hero_up\obsidian_destroyer.png" />
+    <EmbeddedResource Include="res\hero_up\ogre_magi.png" />
+    <EmbeddedResource Include="res\hero_up\omniknight.png" />
+    <EmbeddedResource Include="res\hero_up\oracle.png" />
+    <EmbeddedResource Include="res\hero_up\pangolier.png" />
+    <EmbeddedResource Include="res\hero_up\phantom_assassin.png" />
+    <EmbeddedResource Include="res\hero_up\phantom_lancer.png" />
+    <EmbeddedResource Include="res\hero_up\phoenix.png" />
+    <EmbeddedResource Include="res\hero_up\puck.png" />
+    <EmbeddedResource Include="res\hero_up\pudge.png" />
+    <EmbeddedResource Include="res\hero_up\pugna.png" />
+    <EmbeddedResource Include="res\hero_up\queenofpain.png" />
+    <EmbeddedResource Include="res\hero_up\rattletrap.png" />
+    <EmbeddedResource Include="res\hero_up\razor.png" />
+    <EmbeddedResource Include="res\hero_up\riki.png" />
+    <EmbeddedResource Include="res\hero_up\rubick.png" />
+    <EmbeddedResource Include="res\hero_up\sand_king.png" />
+    <EmbeddedResource Include="res\hero_up\shadow_demon.png" />
+    <EmbeddedResource Include="res\hero_up\shadow_shaman.png" />
+    <EmbeddedResource Include="res\hero_up\shredder.png" />
+    <EmbeddedResource Include="res\hero_up\silencer.png" />
+    <EmbeddedResource Include="res\hero_up\skeleton_king.png" />
+    <EmbeddedResource Include="res\hero_up\skywrath_mage.png" />
+    <EmbeddedResource Include="res\hero_up\slardar.png" />
+    <EmbeddedResource Include="res\hero_up\slark.png" />
+    <EmbeddedResource Include="res\hero_up\sniper.png" />
+    <EmbeddedResource Include="res\hero_up\spectre.png" />
+    <EmbeddedResource Include="res\hero_up\spirit_breaker.png" />
+    <EmbeddedResource Include="res\hero_up\storm_spirit.png" />
+    <EmbeddedResource Include="res\hero_up\sven.png" />
+    <EmbeddedResource Include="res\hero_up\techies.png" />
+    <EmbeddedResource Include="res\hero_up\templar_assassin.png" />
+    <EmbeddedResource Include="res\hero_up\terrorblade.png" />
+    <EmbeddedResource Include="res\hero_up\tidehunter.png" />
+    <EmbeddedResource Include="res\hero_up\tinker.png" />
+    <EmbeddedResource Include="res\hero_up\tiny.png" />
+    <EmbeddedResource Include="res\hero_up\treant.png" />
+    <EmbeddedResource Include="res\hero_up\troll_warlord.png" />
+    <EmbeddedResource Include="res\hero_up\tusk.png" />
+    <EmbeddedResource Include="res\hero_up\undying.png" />
+    <EmbeddedResource Include="res\hero_up\ursa.png" />
+    <EmbeddedResource Include="res\hero_up\vengefulspirit.png" />
+    <EmbeddedResource Include="res\hero_up\venomancer.png" />
+    <EmbeddedResource Include="res\hero_up\viper.png" />
+    <EmbeddedResource Include="res\hero_up\visage.png" />
+    <EmbeddedResource Include="res\hero_up\warlock.png" />
+    <EmbeddedResource Include="res\hero_up\weaver.png" />
+    <EmbeddedResource Include="res\hero_up\windrunner.png" />
+    <EmbeddedResource Include="res\hero_up\winter_wyvern.png" />
+    <EmbeddedResource Include="res\hero_up\wisp.png" />
+    <EmbeddedResource Include="res\hero_up\witch_doctor.png" />
+    <EmbeddedResource Include="res\hero_up\zuus.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\EMGU.CV.3.4.1.2976\build\EMGU.CV.targets" Condition="Exists('packages\EMGU.CV.3.4.1.2976\build\EMGU.CV.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
