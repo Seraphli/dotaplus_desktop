@@ -35,11 +35,15 @@
             this.textBoxOutput = new System.Windows.Forms.TextBox();
             this.textBoxTeam0 = new System.Windows.Forms.TextBox();
             this.textBoxTeam1 = new System.Windows.Forms.TextBox();
+            this.radioButtonTeam0 = new System.Windows.Forms.RadioButton();
+            this.radioButtonTeam1 = new System.Windows.Forms.RadioButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnPredict
             // 
-            this.btnPredict.Location = new System.Drawing.Point(320, 381);
+            this.btnPredict.Location = new System.Drawing.Point(296, 398);
             this.btnPredict.Name = "btnPredict";
             this.btnPredict.Size = new System.Drawing.Size(75, 23);
             this.btnPredict.TabIndex = 0;
@@ -89,11 +93,45 @@
             this.textBoxTeam1.Size = new System.Drawing.Size(345, 21);
             this.textBoxTeam1.TabIndex = 5;
             // 
+            // radioButtonTeam0
+            // 
+            this.radioButtonTeam0.AutoSize = true;
+            this.radioButtonTeam0.Checked = true;
+            this.radioButtonTeam0.Location = new System.Drawing.Point(21, 20);
+            this.radioButtonTeam0.Name = "radioButtonTeam0";
+            this.radioButtonTeam0.Size = new System.Drawing.Size(47, 16);
+            this.radioButtonTeam0.TabIndex = 7;
+            this.radioButtonTeam0.TabStop = true;
+            this.radioButtonTeam0.Text = "天辉";
+            this.radioButtonTeam0.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonTeam1
+            // 
+            this.radioButtonTeam1.AutoSize = true;
+            this.radioButtonTeam1.Location = new System.Drawing.Point(74, 20);
+            this.radioButtonTeam1.Name = "radioButtonTeam1";
+            this.radioButtonTeam1.Size = new System.Drawing.Size(47, 16);
+            this.radioButtonTeam1.TabIndex = 8;
+            this.radioButtonTeam1.Text = "夜魇";
+            this.radioButtonTeam1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.radioButtonTeam1);
+            this.groupBox1.Controls.Add(this.radioButtonTeam0);
+            this.groupBox1.Location = new System.Drawing.Point(12, 381);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(152, 46);
+            this.groupBox1.TabIndex = 9;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "阵营";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(723, 418);
+            this.ClientSize = new System.Drawing.Size(723, 436);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.textBoxTeam1);
             this.Controls.Add(this.textBoxTeam0);
             this.Controls.Add(this.textBoxOutput);
@@ -107,6 +145,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Homemade DotaPlus";
             this.Load += new System.EventHandler(this.FormMain_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -120,6 +160,9 @@
         private System.Windows.Forms.TextBox textBoxOutput;
         private System.Windows.Forms.TextBox textBoxTeam0;
         private System.Windows.Forms.TextBox textBoxTeam1;
+        private System.Windows.Forms.RadioButton radioButtonTeam0;
+        private System.Windows.Forms.RadioButton radioButtonTeam1;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
 

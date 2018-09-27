@@ -66,7 +66,11 @@ namespace dotaplus_desktop
         {
             Dictionary<string, string> dict = new Dictionary<string, string>();
 
-            int team_no = 0;
+            int team_no;
+            if (radioButtonTeam0.Checked)
+                team_no = 0;
+            else
+                team_no = 1;
             string json = JsonConvert.SerializeObject(team_no);
             dict.Add("team_no", json);
 
@@ -166,7 +170,6 @@ namespace dotaplus_desktop
 
             screen.ROI = roi;
             var part = screen.Copy();
-            part.Save("Temp.png");
             Image<Gray, float> result = new Image<Gray, float>(part.Width, part.Height);
             result = screen.MatchTemplate(TemplateDict[heroName], TemplateMatchingType.SqdiffNormed);
             double min = 0, max = 0;
