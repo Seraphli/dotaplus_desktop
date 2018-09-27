@@ -84,7 +84,7 @@ namespace dotaplus_desktop
         private void btnPredict_Click(object sender, EventArgs e)
         {
             Dictionary<string, string> dict = GenerateRequest();
-            string result = Post("http://97.64.44.192:30207/bp", dict);
+            string result = Post(Base64Decode("aHR0cDovLzk3LjY0LjQ0LjE5MjozMDIwNy9icA=="), dict);
             JObject res = JsonConvert.DeserializeObject<JObject>(result);
             if (res.ContainsKey("g_table_1"))
             {
@@ -142,6 +142,18 @@ namespace dotaplus_desktop
                 imgGraphics.CopyFromScreen(0, 0, 0, 0, new Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height));
             }
             return image;
+        }
+
+        public static string Base64Encode(string plainText)
+        {
+            var plainTextBytes = Encoding.UTF8.GetBytes(plainText);
+            return Convert.ToBase64String(plainTextBytes);
+        }
+
+        public static string Base64Decode(string base64EncodedData)
+        {
+            var base64EncodedBytes = Convert.FromBase64String(base64EncodedData);
+            return Encoding.UTF8.GetString(base64EncodedBytes);
         }
 
         bool DetectOneHero(List<int> pos, string heroName, Image<Bgr, byte> screen)
