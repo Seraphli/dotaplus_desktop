@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,7 +20,7 @@ namespace dotaplus_desktop
 
         public PosIndex(JObject cfg)
         {
-            heroNum = cfg["HERO_NUM"].ToObject<List<List<int>>>();
+            heroNum = cfg["num"].ToObject<List<List<int>>>();
             int sum = 0;
             foreach (List<int> rows in heroNum)
                 foreach (int col in rows)
@@ -68,5 +70,49 @@ namespace dotaplus_desktop
                 return (T)binaryFormatter.Deserialize(memoryStream);
             }
         }
+    }
+
+    public class Util
+    {
+        public static string GetFromResources(string resourceName)
+        {
+            Assembly assem = Assembly.GetExecutingAssembly();
+            using (Stream stream = assem.GetManifestResourceStream(assem.GetName().Name + '.' + resourceName))
+            {
+                using (var reader = new StreamReader(stream))
+                {
+                    return reader.ReadToEnd();
+                }
+            }
+        }
+
+        public static Bitmap GetImageFromResources(string resourceName)
+        {
+            Assembly assem = Assembly.GetExecutingAssembly();
+            Bitmap image;
+            using (Stream stream = assem.GetManifestResourceStream(assem.GetName().Name + '.' + resourceName))
+            {
+                image = new Bitmap(stream);
+            }
+            return image;
+        }
+
+        public static string Base64Encode(string plainText)
+        {
+            var plainTextBytes = Encoding.UTF8.GetBytes(plainText);
+            return Convert.ToBase64String(plainTextBytes);
+        }
+
+        public static string Base64Decode(string base64EncodedData)
+        {
+            var base64EncodedBytes = Convert.FromBase64String(base64EncodedData);
+            return Encoding.UTF8.GetString(base64EncodedBytes);
+        }
+    }
+
+    public class ServerConfig
+    {
+        public string config_str;
+        public List<string> roles;
     }
 }

@@ -8,10 +8,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
-using Emgu.CV;
-using System.Drawing;
-using Emgu.CV.Structure;
-using Emgu.CV.CvEnum;
 using Newtonsoft.Json.Linq;
 
 namespace dotaplus_desktop
@@ -62,7 +58,7 @@ namespace dotaplus_desktop
             return result;
         }
 
-        private Dictionary<string, string> GenerateRequest()
+        private Dictionary<string, string> GenerateRequest(string[,] teams, List<string> available)
         {
             Dictionary<string, string> dict = new Dictionary<string, string>();
 
@@ -74,224 +70,203 @@ namespace dotaplus_desktop
             string json = JsonConvert.SerializeObject(team_no);
             dict.Add("team_no", json);
 
-            var available = GetAvailableHero();
+            json = JsonConvert.SerializeObject(teams);
+            dict.Add("teams", json);
+
             json = JsonConvert.SerializeObject(available);
             dict.Add("available", json);
 
-            string[,] teams = GetChosenHero(available);
-            json = JsonConvert.SerializeObject(teams);
-            dict.Add("teams", json);
+            ServerConfig cfg = new ServerConfig();
+            cfg.config_str = CustomData["dotamax_cn"]["server"][comboBoxServer.Text] +
+                "_" + CustomData["dotamax_cn"]["skill"][comboBoxSkill.Text] +
+                "_" + CustomData["dotamax_cn"]["ladder"][comboBoxLadder.Text];
+            cfg.roles = new List<string>();
+            for (int i = 0; i < checkedListBoxRole.Items.Count; i++)
+            {
+                if (checkedListBoxRole.GetItemChecked(i))
+                {
+                    string name = checkedListBoxRole.Items[i].ToString();
+                    string roleName = RoleName[name].ToString();
+                    cfg.roles.Add(roleName);
+                }
+            }
+            json = JsonConvert.SerializeObject(cfg);
+            dict.Add("cfg", json);
+
             return dict;
         }
 
-
-        private void btnPredict_Click(object sender, EventArgs e)
+        void SetLabel(string[,] teamText)
         {
-            Dictionary<string, string> dict = GenerateRequest();
-            string result = Post(Base64Decode("aHR0cDovLzk3LjY0LjQ0LjE5MjozMDIwNy9icA=="), dict);
-            JObject res = JsonConvert.DeserializeObject<JObject>(result);
-            if (res.ContainsKey("g_table_1"))
+            for (int t = 0; t < 2; t++)
             {
-                string table = (string)((JValue)res["g_table_1"]).Value;
-                table = table.Replace("\n", "\r\n");
-                textBoxTable.Text = table;
+                for (int n = 0; n < 5; n++)
+                {
+                    int index = 1 + n + 5 * t;
+                    object obj = this.GetType().GetField("label" + index,
+                        System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance
+                        | System.Reflection.BindingFlags.IgnoreCase).GetValue(this);
+                    Label labelBox = (Label)obj;
+                    labelBox.Text = teamText[t, n];
+                }
             }
-            else
+        }
+
+        private void btnScreenPredict_Click(object sender, EventArgs e)
+        {
+            try
             {
-                string table = (string)((JValue)res["g_table"]).Value;
-                table = table.Replace("\n", "\r\n");
-                textBoxTable.Text = table;
+                List<string> available = imgProc.GetAvailableHero();
+                string[,] teamText;
+                string[,] teams = imgProc.GetChosenHero(available, out teamText);
+                SetLabel(teamText);
+                Dictionary<string, string> dict = GenerateRequest(teams, available);
+                Request(dict);
+            }
+            catch (System.NullReferenceException ex)
+            {
+                textBoxOutput.Text = "错误, 请检查是否已经按照使用手册里面描述的方法进行截图.";
+            }
+        }
+
+        void Request(Dictionary<string, string> dict)
+        {
+            string result = Post(Util.Base64Decode("aHR0cDovLzk3LjY0LjQ0LjE5Mjo=") + "30207/bp", dict);
+            //string result = Post("http://127.0.0.1:30207/bp", dict);
+            JObject res = JsonConvert.DeserializeObject<JObject>(result);
+            var table = (JArray)res["table"];
+            dataGridViewTable.Rows.Clear();
+            dataGridViewTable.Refresh();
+            dataGridViewTable.Rows.Add(table.Count);
+            for (int i = 0; i < table.Count; i++)
+            {
+                var line = (JArray)table[i];
+                for (int j = 0; j < line.Count; j++)
+                {
+                    dataGridViewTable.Rows[i].Cells[j].Value = line[j].ToString();
+                }
             }
             string output = (string)((JValue)res["output"]).Value;
             textBoxOutput.Text = output;
         }
 
-        internal static string GetFromResources(string resourceName)
+        void AddAutoComplete()
         {
-            Assembly assem = Assembly.GetExecutingAssembly();
-            using (Stream stream = assem.GetManifestResourceStream(assem.GetName().Name + '.' + resourceName))
+            AutoCompleteStringCollection strings = new AutoCompleteStringCollection();
+            Dictionary<string, List<string>> abbr = CustomData["abbrev_dict"].ToObject<Dictionary<string, List<string>>>();
+            foreach (var h in abbr.Values)
             {
-                using (var reader = new StreamReader(stream))
-                {
-                    return reader.ReadToEnd();
-                }
+                strings.AddRange(h.ToArray());
+            }
+            for (int i = 1; i <= 10; i++)
+            {
+                object obj = this.GetType().GetField("textBox" + i,
+                    System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance
+                    | System.Reflection.BindingFlags.IgnoreCase).GetValue(this);
+                TextBox txtBox = (TextBox)obj;
+                txtBox.AutoCompleteCustomSource = strings;
             }
         }
 
-        internal static Bitmap GetImageFromResources(string resourceName)
+        void SetDefault()
         {
-            Assembly assem = Assembly.GetExecutingAssembly();
-            Bitmap image;
-            using (Stream stream = assem.GetManifestResourceStream(assem.GetName().Name + '.' + resourceName))
+            comboBoxServer.SelectedIndex = 0;
+            comboBoxSkill.SelectedIndex = 0;
+            comboBoxLadder.SelectedIndex = 0;
+
+            SetAllRoles(true);
+        }
+
+        void SetAllRoles(bool flag)
+        {
+            for (int i = 0; i < checkedListBoxRole.Items.Count; i++)
             {
-                image = new Bitmap(stream);
-            }
-            return image;
-        }
-
-        internal static Bitmap GetScreenshotFromClipboard()
-        {
-            Bitmap image;
-            IDataObject data = Clipboard.GetDataObject();
-            image = (Bitmap)(data.GetData(typeof(Bitmap)));
-            return image;
-        }
-
-        internal static Bitmap GetScreenshot()
-        {
-            Bitmap image = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
-            using (Graphics imgGraphics = Graphics.FromImage(image))
-            {
-                //设置截屏区域
-                imgGraphics.CopyFromScreen(0, 0, 0, 0, new Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height));
-            }
-            return image;
-        }
-
-        public static string Base64Encode(string plainText)
-        {
-            var plainTextBytes = Encoding.UTF8.GetBytes(plainText);
-            return Convert.ToBase64String(plainTextBytes);
-        }
-
-        public static string Base64Decode(string base64EncodedData)
-        {
-            var base64EncodedBytes = Convert.FromBase64String(base64EncodedData);
-            return Encoding.UTF8.GetString(base64EncodedBytes);
-        }
-
-        bool DetectOneHero(List<int> pos, string heroName, Image<Bgr, byte> screen)
-        {
-            List<int> xywh = CustomData["hero_choose_interface"]["X, Y, W, H"].ToObject<List<int>>();
-            List<int> d = CustomData["hero_choose_interface"]["D_COL, D_ROW, D_CLASS"].ToObject<List<int>>();
-            int x = xywh[0] + pos[2] * d[0];
-            int y = xywh[1] + pos[1] * d[1] + pos[0] * d[2];
-            Rectangle roi = new Rectangle(x, y, xywh[2], xywh[3]);
-
-            screen.ROI = roi;
-            var part = screen.Copy();
-            Image<Gray, float> result = new Image<Gray, float>(part.Width, part.Height);
-            result = screen.MatchTemplate(TemplateDict[heroName], TemplateMatchingType.SqdiffNormed);
-            double min = 0, max = 0;
-            Point maxp = new Point(0, 0);
-            Point minp = new Point(0, 0);
-            CvInvoke.MinMaxLoc(result, ref min, ref max, ref minp, ref maxp);
-            if (min < 0.01)
-                return true;
-            else
-                return false;
-        }
-
-        string DetectOneHeroUp(int team, int heroNum, List<string> heroes, Image<Bgr, byte> screen)
-        {
-            int x, y;
-            if (team == 0)
-            {
-                List<int> xy = CustomData["hero_image"]["T_0_X, T_0_Y"].ToObject<List<int>>();
-                x = xy[0];
-                y = xy[1];
-            }
-            else
-            {
-                List<int> xy = CustomData["hero_image"]["T_1_X, T_1_Y"].ToObject<List<int>>();
-                x = xy[0];
-                y = xy[1];
-            }
-            int d = CustomData["hero_image"]["D_HERO"].ToObject<int>();
-            x += heroNum * d;
-            List<int> wh = CustomData["hero_image"]["UP_W, UP_H"].ToObject<List<int>>();
-            Rectangle roi = new Rectangle(x, y, wh[0], wh[1]);
-
-            screen.ROI = roi;
-            var part = screen.Copy();
-            foreach (string hero in heroes)
-            {
-                Image<Gray, float> result = new Image<Gray, float>(part.Width, part.Height);
-                result = screen.MatchTemplate(UpTemplateDict[hero], TemplateMatchingType.SqdiffNormed);
-                double min = 0, max = 0;
-                Point maxp = new Point(0, 0);
-                Point minp = new Point(0, 0);
-                CvInvoke.MinMaxLoc(result, ref min, ref max, ref minp, ref maxp);
-                if (min < 0.01)
-                    return hero;
-            }
-            return "none";
-
-        }
-
-        List<string> GetAvailableHero()
-        {
-            List<string> available = new List<string>();
-            Image<Bgr, byte> screen = new Image<Bgr, byte>(GetScreenshotFromClipboard());
-            PosIndex posIndex = new PosIndex((JObject)CustomData["hero_choose_interface"]);
-            List<int> xywh = CustomData["hero_choose_interface"]["X, Y, W, H"].ToObject<List<int>>();
-            List<int> d = CustomData["hero_choose_interface"]["D_COL, D_ROW, D_CLASS"].ToObject<List<int>>();
-            foreach (string heroName in heroes)
-            {
-                posIndex.Increment();
-                var pos = posIndex.GetPos();
-                if (DetectOneHero(pos, heroName, screen))
-                    available.Add(heroName);
-            }
-            return available;
-        }
-
-        string[,] GetChosenHero(List<string> available)
-        {
-            List<string> deepCopiedList = GenericCopier<List<string>>.DeepCopy(heroes);
-            var _heroes = deepCopiedList.Except(available).ToList();
-            Image<Bgr, byte> screen = new Image<Bgr, byte>(GetScreenshotFromClipboard());
-            string[,] teams = new string[2, 5];
-            for (int t = 0; t < 2; t++)
-            {
-                List<string> teamText = new List<string>();
-                for (int n = 0; n < 5; n++)
-                {
-                    string res = DetectOneHeroUp(t, n, _heroes, screen);
-                    teams[t, n] = res;
-                    if (res == "none")
-                        teamText.Add("无");
-                    else
-                    {
-                        string name = CustomData["CN_ABBREV_DICT"][res].ToObject<List<string>>().Last();
-                        teamText.Add(name);
-                    }
-                }
-                if (t == 0)
-                    textBoxTeam0.Text = string.Join("  |  ", teamText);
-                else
-                    textBoxTeam1.Text = string.Join("  |  ", teamText);
-            }
-            return teams;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            var a = GetAvailableHero();
-            Console.WriteLine(GetAvailableHero().ToString());
-        }
-
-        List<string> heroes = new List<string>();
-        Dictionary<string, Image<Bgr, byte>> TemplateDict = new Dictionary<string, Image<Bgr, byte>>();
-        Dictionary<string, Image<Bgr, byte>> UpTemplateDict = new Dictionary<string, Image<Bgr, byte>>();
-        void LoadTemplate()
-        {
-            foreach (JValue hero in (JArray)CustomData["CN_LAYOUT"])
-            {
-                string heroName = (string)hero.Value;
-                heroes.Add(heroName);
-                Image<Bgr, byte> template = new Image<Bgr, byte>(GetImageFromResources("res.hero." + heroName + ".png"));
-                TemplateDict.Add(heroName, template);
-                Image<Bgr, byte> upTemplate = new Image<Bgr, byte>(GetImageFromResources("res.hero_up." + heroName + ".png"));
-                UpTemplateDict.Add(heroName, upTemplate);
+                checkedListBoxRole.SetItemChecked(i, flag);
             }
         }
 
         JObject CustomData;
+        ImageProc imgProc;
+        JObject RoleName;
         private void FormMain_Load(object sender, EventArgs e)
         {
-            CustomData = JsonConvert.DeserializeObject<JObject>(FormMain.GetFromResources("custom_data.json"));
-            LoadTemplate();
+            CustomData = JsonConvert.DeserializeObject<JObject>(Util.GetFromResources("custom_data.json"));
+            imgProc = new ImageProc(CustomData);
+            AddAutoComplete();
+            SetDefault();
+            var array = (JArray)CustomData["role"]["role_name"];
+            RoleName = (JObject)array[1];
+        }
+
+        private void checkBoxUnlock_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxUnlock.Checked)
+            {
+                for (int i = 1; i <= 10; i++)
+                {
+                    object obj = this.GetType().GetField("textBox" + i,
+                        System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance
+                        | System.Reflection.BindingFlags.IgnoreCase).GetValue(this);
+                    TextBox txtBox = (TextBox)obj;
+                    txtBox.Enabled = true;
+                }
+                btnTextPredict.Enabled = true;
+            }
+            else
+            {
+                for (int i = 1; i <= 10; i++)
+                {
+                    object obj = this.GetType().GetField("textBox" + i,
+                        System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance
+                        | System.Reflection.BindingFlags.IgnoreCase).GetValue(this);
+                    TextBox txtBox = (TextBox)obj;
+                    txtBox.Enabled = false;
+                }
+                btnTextPredict.Enabled = false;
+            }
+        }
+
+        private void btnTextPredict_Click(object sender, EventArgs e)
+        {
+            string[,] teams = new string[2, 5];
+            string[,] teamText = new string[2, 5];
+            var available = CustomData["cn_layout"].ToObject<List<string>>();
+            for (int t = 0; t < 2; t++)
+            {
+                for (int n = 0; n < 5; n++)
+                {
+                    int index = 1 + n + t * 5;
+                    object obj = this.GetType().GetField("textBox" + index,
+                    System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance
+                    | System.Reflection.BindingFlags.IgnoreCase).GetValue(this);
+                    TextBox txtBox = (TextBox)obj;
+                    if (txtBox.Text == "无" || txtBox.Text == "none" || txtBox.Text == "")
+                    {
+                        teams[t, n] = "none";
+                        teamText[t, n] = "无";
+                    }
+                    else
+                    {
+                        var key = CustomData["inverse_abbrev_dict"][txtBox.Text].ToString();
+                        teams[t, n] = key;
+                        teamText[t, n] = CustomData["abbrev_dict"][key].ToObject<List<string>>().Last();
+                        available.Remove(key);
+                    }
+                }
+            }
+            SetLabel(teamText);
+            Dictionary<string, string> dict = GenerateRequest(teams, available);
+            Request(dict);
+        }
+
+        private void buttonSelectAll_Click(object sender, EventArgs e)
+        {
+            SetAllRoles(true);
+        }
+
+        private void buttonSelectNone_Click(object sender, EventArgs e)
+        {
+            SetAllRoles(false);
         }
     }
 }
