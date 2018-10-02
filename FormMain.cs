@@ -255,6 +255,11 @@ namespace dotaplus_desktop
                             teamText[t, n] = CustomData["abbrev_dict"][key].ToObject<List<string>>().Last();
                             available.Remove(key);
                         }
+                        else
+                        {
+                            teams[t, n] = "none";
+                            teamText[t, n] = "无";
+                        }
                         
                     }
                 }
