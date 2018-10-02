@@ -123,7 +123,7 @@ namespace dotaplus_desktop
                 Dictionary<string, string> dict = GenerateRequest(teams, available);
                 Request(dict);
             }
-            catch (System.NullReferenceException ex)
+            catch (Exception ex)
             {
                 textBoxOutput.Text = "错误, 请检查是否已经按照使用手册里面描述的方法进行截图.";
             }
@@ -247,10 +247,15 @@ namespace dotaplus_desktop
                     }
                     else
                     {
-                        var key = CustomData["inverse_abbrev_dict"][txtBox.Text].ToString();
-                        teams[t, n] = key;
-                        teamText[t, n] = CustomData["abbrev_dict"][key].ToObject<List<string>>().Last();
-                        available.Remove(key);
+                        var _dict = CustomData["inverse_abbrev_dict"].ToObject<Dictionary<string, string>>();
+                        if (_dict.ContainsKey(txtBox.Text))
+                        {
+                            var key = _dict[txtBox.Text];
+                            teams[t, n] = key;
+                            teamText[t, n] = CustomData["abbrev_dict"][key].ToObject<List<string>>().Last();
+                            available.Remove(key);
+                        }
+                        
                     }
                 }
             }

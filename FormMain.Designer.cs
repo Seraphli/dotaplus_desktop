@@ -48,20 +48,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.checkBoxUnlock = new System.Windows.Forms.CheckBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dataGridViewTable = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -74,27 +67,21 @@
             this.buttonSelectNone = new System.Windows.Forms.Button();
             this.buttonSelectAll = new System.Windows.Forms.Button();
             this.checkedListBoxRole = new System.Windows.Forms.CheckedListBox();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.textBox14 = new System.Windows.Forms.TextBox();
-            this.textBox15 = new System.Windows.Forms.TextBox();
-            this.textBox16 = new System.Windows.Forms.TextBox();
-            this.textBox17 = new System.Windows.Forms.TextBox();
-            this.textBox18 = new System.Windows.Forms.TextBox();
-            this.textBox19 = new System.Windows.Forms.TextBox();
-            this.textBox20 = new System.Windows.Forms.TextBox();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTable)).BeginInit();
             this.groupBox5.SuspendLayout();
@@ -115,7 +102,7 @@
             // 
             // textBoxOutput
             // 
-            this.textBoxOutput.Location = new System.Drawing.Point(18, 367);
+            this.textBoxOutput.Location = new System.Drawing.Point(8, 367);
             this.textBoxOutput.Multiline = true;
             this.textBoxOutput.Name = "textBoxOutput";
             this.textBoxOutput.Size = new System.Drawing.Size(727, 47);
@@ -147,7 +134,7 @@
             // 
             this.groupBox1.Controls.Add(this.radioButtonTeam1);
             this.groupBox1.Controls.Add(this.radioButtonTeam0);
-            this.groupBox1.Location = new System.Drawing.Point(460, 30);
+            this.groupBox1.Location = new System.Drawing.Point(493, 30);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(85, 70);
             this.groupBox1.TabIndex = 9;
@@ -169,7 +156,7 @@
             // 
             this.groupBox2.Controls.Add(this.groupBox7);
             this.groupBox2.Controls.Add(this.groupBox6);
-            this.groupBox2.Location = new System.Drawing.Point(18, 13);
+            this.groupBox2.Location = new System.Drawing.Point(8, 13);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(727, 84);
             this.groupBox2.TabIndex = 11;
@@ -292,136 +279,16 @@
             this.label4.Text = "无";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // textBox1
-            // 
-            this.textBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.textBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(23, 42);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(57, 21);
-            this.textBox1.TabIndex = 12;
-            // 
-            // textBox2
-            // 
-            this.textBox2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.textBox2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(86, 42);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(57, 21);
-            this.textBox2.TabIndex = 13;
-            // 
-            // textBox3
-            // 
-            this.textBox3.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.textBox3.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.textBox3.Enabled = false;
-            this.textBox3.Location = new System.Drawing.Point(149, 42);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(57, 21);
-            this.textBox3.TabIndex = 14;
-            // 
-            // textBox4
-            // 
-            this.textBox4.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.textBox4.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.textBox4.Enabled = false;
-            this.textBox4.Location = new System.Drawing.Point(212, 42);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(57, 21);
-            this.textBox4.TabIndex = 15;
-            // 
-            // textBox5
-            // 
-            this.textBox5.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.textBox5.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.textBox5.Enabled = false;
-            this.textBox5.Location = new System.Drawing.Point(275, 42);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(57, 21);
-            this.textBox5.TabIndex = 16;
-            // 
-            // textBox6
-            // 
-            this.textBox6.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.textBox6.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.textBox6.Enabled = false;
-            this.textBox6.Location = new System.Drawing.Point(397, 42);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(57, 21);
-            this.textBox6.TabIndex = 17;
-            // 
-            // textBox7
-            // 
-            this.textBox7.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.textBox7.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.textBox7.Enabled = false;
-            this.textBox7.Location = new System.Drawing.Point(460, 42);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(57, 21);
-            this.textBox7.TabIndex = 18;
-            // 
-            // textBox8
-            // 
-            this.textBox8.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.textBox8.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.textBox8.Enabled = false;
-            this.textBox8.Location = new System.Drawing.Point(523, 42);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(57, 21);
-            this.textBox8.TabIndex = 19;
-            // 
-            // textBox9
-            // 
-            this.textBox9.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.textBox9.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.textBox9.Enabled = false;
-            this.textBox9.Location = new System.Drawing.Point(586, 42);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(57, 21);
-            this.textBox9.TabIndex = 20;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.checkBoxUnlock);
-            this.groupBox3.Controls.Add(this.textBox10);
-            this.groupBox3.Controls.Add(this.textBox1);
-            this.groupBox3.Controls.Add(this.textBox9);
-            this.groupBox3.Controls.Add(this.textBox2);
-            this.groupBox3.Controls.Add(this.textBox8);
-            this.groupBox3.Controls.Add(this.textBox3);
-            this.groupBox3.Controls.Add(this.textBox7);
-            this.groupBox3.Controls.Add(this.textBox4);
-            this.groupBox3.Controls.Add(this.textBox6);
-            this.groupBox3.Controls.Add(this.textBox5);
-            this.groupBox3.Location = new System.Drawing.Point(16, 12);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(752, 80);
-            this.groupBox3.TabIndex = 21;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "输入阵容";
-            // 
             // checkBoxUnlock
             // 
             this.checkBoxUnlock.AutoSize = true;
-            this.checkBoxUnlock.Location = new System.Drawing.Point(344, 20);
+            this.checkBoxUnlock.Location = new System.Drawing.Point(351, 17);
             this.checkBoxUnlock.Name = "checkBoxUnlock";
             this.checkBoxUnlock.Size = new System.Drawing.Size(48, 16);
             this.checkBoxUnlock.TabIndex = 23;
             this.checkBoxUnlock.Text = "解锁";
             this.checkBoxUnlock.UseVisualStyleBackColor = true;
             this.checkBoxUnlock.CheckedChanged += new System.EventHandler(this.checkBoxUnlock_CheckedChanged);
-            // 
-            // textBox10
-            // 
-            this.textBox10.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.textBox10.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.textBox10.Enabled = false;
-            this.textBox10.Location = new System.Drawing.Point(649, 42);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(57, 21);
-            this.textBox10.TabIndex = 22;
             // 
             // groupBox4
             // 
@@ -430,7 +297,7 @@
             this.groupBox4.Controls.Add(this.textBoxOutput);
             this.groupBox4.Location = new System.Drawing.Point(16, 227);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(752, 432);
+            this.groupBox4.Size = new System.Drawing.Size(752, 430);
             this.groupBox4.TabIndex = 22;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "预测结果";
@@ -448,13 +315,41 @@
             this.Column2,
             this.Column3,
             this.Column4});
-            this.dataGridViewTable.Location = new System.Drawing.Point(18, 103);
+            this.dataGridViewTable.Location = new System.Drawing.Point(8, 103);
             this.dataGridViewTable.Name = "dataGridViewTable";
             this.dataGridViewTable.ReadOnly = true;
             this.dataGridViewTable.RowHeadersVisible = false;
             this.dataGridViewTable.RowTemplate.Height = 23;
             this.dataGridViewTable.Size = new System.Drawing.Size(727, 258);
             this.dataGridViewTable.TabIndex = 12;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "序号";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 54;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "英雄";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 54;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "参考值";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 66;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "原因";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 54;
             // 
             // groupBox5
             // 
@@ -602,47 +497,19 @@
             this.checkedListBoxRole.Size = new System.Drawing.Size(144, 84);
             this.checkedListBoxRole.TabIndex = 23;
             // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "序号";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 54;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "英雄";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 54;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "参考值";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 66;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "原因";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 54;
-            // 
             // groupBox10
             // 
-            this.groupBox10.Controls.Add(this.checkBox1);
-            this.groupBox10.Controls.Add(this.textBox11);
-            this.groupBox10.Controls.Add(this.textBox12);
-            this.groupBox10.Controls.Add(this.textBox13);
-            this.groupBox10.Controls.Add(this.textBox14);
-            this.groupBox10.Controls.Add(this.textBox15);
-            this.groupBox10.Controls.Add(this.textBox16);
-            this.groupBox10.Controls.Add(this.textBox17);
-            this.groupBox10.Controls.Add(this.textBox18);
-            this.groupBox10.Controls.Add(this.textBox19);
-            this.groupBox10.Controls.Add(this.textBox20);
+            this.groupBox10.Controls.Add(this.checkBoxUnlock);
+            this.groupBox10.Controls.Add(this.textBox10);
+            this.groupBox10.Controls.Add(this.textBox1);
+            this.groupBox10.Controls.Add(this.textBox9);
+            this.groupBox10.Controls.Add(this.textBox2);
+            this.groupBox10.Controls.Add(this.textBox8);
+            this.groupBox10.Controls.Add(this.textBox3);
+            this.groupBox10.Controls.Add(this.textBox7);
+            this.groupBox10.Controls.Add(this.textBox4);
+            this.groupBox10.Controls.Add(this.textBox6);
+            this.groupBox10.Controls.Add(this.textBox5);
             this.groupBox10.Location = new System.Drawing.Point(16, 12);
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.Size = new System.Drawing.Size(752, 80);
@@ -650,126 +517,114 @@
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "输入阵容";
             // 
-            // checkBox1
+            // textBox10
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(346, 20);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(48, 16);
-            this.checkBox1.TabIndex = 23;
-            this.checkBox1.Text = "解锁";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBoxUnlock_CheckedChanged);
+            this.textBox10.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.textBox10.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.textBox10.Enabled = false;
+            this.textBox10.Location = new System.Drawing.Point(678, 42);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(67, 21);
+            this.textBox10.TabIndex = 10;
             // 
-            // textBox11
+            // textBox1
             // 
-            this.textBox11.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.textBox11.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.textBox11.Enabled = false;
-            this.textBox11.Location = new System.Drawing.Point(678, 42);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(67, 21);
-            this.textBox11.TabIndex = 22;
+            this.textBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.textBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.textBox1.Enabled = false;
+            this.textBox1.Location = new System.Drawing.Point(8, 42);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(67, 21);
+            this.textBox1.TabIndex = 1;
             // 
-            // textBox12
+            // textBox9
             // 
-            this.textBox12.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.textBox12.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.textBox12.Enabled = false;
-            this.textBox12.Location = new System.Drawing.Point(8, 42);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(67, 21);
-            this.textBox12.TabIndex = 12;
+            this.textBox9.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.textBox9.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.textBox9.Enabled = false;
+            this.textBox9.Location = new System.Drawing.Point(605, 42);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(67, 21);
+            this.textBox9.TabIndex = 9;
             // 
-            // textBox13
+            // textBox2
             // 
-            this.textBox13.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.textBox13.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.textBox13.Enabled = false;
-            this.textBox13.Location = new System.Drawing.Point(605, 42);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(67, 21);
-            this.textBox13.TabIndex = 20;
+            this.textBox2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.textBox2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.textBox2.Enabled = false;
+            this.textBox2.Location = new System.Drawing.Point(79, 42);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(67, 21);
+            this.textBox2.TabIndex = 2;
             // 
-            // textBox14
+            // textBox8
             // 
-            this.textBox14.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.textBox14.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.textBox14.Enabled = false;
-            this.textBox14.Location = new System.Drawing.Point(79, 42);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(67, 21);
-            this.textBox14.TabIndex = 13;
+            this.textBox8.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.textBox8.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.textBox8.Enabled = false;
+            this.textBox8.Location = new System.Drawing.Point(533, 42);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(67, 21);
+            this.textBox8.TabIndex = 8;
             // 
-            // textBox15
+            // textBox3
             // 
-            this.textBox15.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.textBox15.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.textBox15.Enabled = false;
-            this.textBox15.Location = new System.Drawing.Point(533, 42);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(67, 21);
-            this.textBox15.TabIndex = 19;
+            this.textBox3.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.textBox3.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.textBox3.Enabled = false;
+            this.textBox3.Location = new System.Drawing.Point(151, 42);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(67, 21);
+            this.textBox3.TabIndex = 3;
             // 
-            // textBox16
+            // textBox7
             // 
-            this.textBox16.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.textBox16.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.textBox16.Enabled = false;
-            this.textBox16.Location = new System.Drawing.Point(151, 42);
-            this.textBox16.Name = "textBox16";
-            this.textBox16.Size = new System.Drawing.Size(67, 21);
-            this.textBox16.TabIndex = 14;
+            this.textBox7.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.textBox7.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.textBox7.Enabled = false;
+            this.textBox7.Location = new System.Drawing.Point(459, 42);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(67, 21);
+            this.textBox7.TabIndex = 7;
             // 
-            // textBox17
+            // textBox4
             // 
-            this.textBox17.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.textBox17.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.textBox17.Enabled = false;
-            this.textBox17.Location = new System.Drawing.Point(459, 42);
-            this.textBox17.Name = "textBox17";
-            this.textBox17.Size = new System.Drawing.Size(67, 21);
-            this.textBox17.TabIndex = 18;
+            this.textBox4.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.textBox4.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.textBox4.Enabled = false;
+            this.textBox4.Location = new System.Drawing.Point(225, 42);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(67, 21);
+            this.textBox4.TabIndex = 4;
             // 
-            // textBox18
+            // textBox6
             // 
-            this.textBox18.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.textBox18.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.textBox18.Enabled = false;
-            this.textBox18.Location = new System.Drawing.Point(225, 42);
-            this.textBox18.Name = "textBox18";
-            this.textBox18.Size = new System.Drawing.Size(67, 21);
-            this.textBox18.TabIndex = 15;
+            this.textBox6.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.textBox6.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.textBox6.Enabled = false;
+            this.textBox6.Location = new System.Drawing.Point(387, 42);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(67, 21);
+            this.textBox6.TabIndex = 6;
             // 
-            // textBox19
+            // textBox5
             // 
-            this.textBox19.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.textBox19.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.textBox19.Enabled = false;
-            this.textBox19.Location = new System.Drawing.Point(387, 42);
-            this.textBox19.Name = "textBox19";
-            this.textBox19.Size = new System.Drawing.Size(67, 21);
-            this.textBox19.TabIndex = 17;
-            // 
-            // textBox20
-            // 
-            this.textBox20.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.textBox20.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.textBox20.Enabled = false;
-            this.textBox20.Location = new System.Drawing.Point(299, 42);
-            this.textBox20.Name = "textBox20";
-            this.textBox20.Size = new System.Drawing.Size(67, 21);
-            this.textBox20.TabIndex = 16;
+            this.textBox5.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.textBox5.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.textBox5.Enabled = false;
+            this.textBox5.Location = new System.Drawing.Point(299, 42);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(67, 21);
+            this.textBox5.TabIndex = 5;
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(775, 669);
+            this.ClientSize = new System.Drawing.Size(780, 669);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox10);
-            this.Controls.Add(this.groupBox3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -782,8 +637,6 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTable)).EndInit();
@@ -816,18 +669,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.CheckBox checkBoxUnlock;
-        private System.Windows.Forms.TextBox textBox10;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.ComboBox comboBoxLadder;
@@ -849,17 +691,16 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.GroupBox groupBox10;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.TextBox textBox13;
-        private System.Windows.Forms.TextBox textBox14;
-        private System.Windows.Forms.TextBox textBox15;
-        private System.Windows.Forms.TextBox textBox16;
-        private System.Windows.Forms.TextBox textBox17;
-        private System.Windows.Forms.TextBox textBox18;
-        private System.Windows.Forms.TextBox textBox19;
-        private System.Windows.Forms.TextBox textBox20;
+        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox textBox5;
     }
 }
 
