@@ -414,9 +414,9 @@
             // 
             this.comboBoxServer.FormattingEnabled = true;
             this.comboBoxServer.Items.AddRange(new object[] {
-            "全球",
+            "全部",
             "中国",
-            "国外"});
+            "全球"});
             this.comboBoxServer.Location = new System.Drawing.Point(74, 18);
             this.comboBoxServer.Name = "comboBoxServer";
             this.comboBoxServer.Size = new System.Drawing.Size(94, 20);

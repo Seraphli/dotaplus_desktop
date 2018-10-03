@@ -117,6 +117,10 @@ namespace dotaplus_desktop
             try
             {
                 List<string> available = imgProc.GetAvailableHero();
+                if (available.Count <= 30)
+                {
+                    throw new Exception();
+                }
                 string[,] teamText;
                 string[,] teams = imgProc.GetChosenHero(available, out teamText);
                 SetLabel(teamText);
