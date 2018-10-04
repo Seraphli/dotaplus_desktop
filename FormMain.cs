@@ -117,7 +117,7 @@ namespace dotaplus_desktop
             try
             {
                 List<string> available = imgProc.GetAvailableHero();
-                if (available.Count <= 30)
+                if (available.Count <= 0)
                 {
                     throw new Exception();
                 }
